@@ -6,7 +6,12 @@ import dts from 'vite-plugin-dts'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      jsxRuntime: 'automatic',
+      babel: {
+        plugins: ['@emotion/babel-plugin']
+      }
+    }),
     dts({
       include: ['src'],
       exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],

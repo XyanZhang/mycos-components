@@ -1,0 +1,20 @@
+{
+  "extends": "@antfu",
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    // 自定义规则覆盖
+    "no-console": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    // React 相关规则
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

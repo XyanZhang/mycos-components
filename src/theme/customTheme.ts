@@ -1,4 +1,4 @@
-import { Theme } from './theme';
+import { Theme } from './theme'
 
 export const darkTheme: Theme = {
   colors: {
@@ -35,4 +35,4 @@ export const darkTheme: Theme = {
       focus: '#90caf9',
     },
   },
-}; 
+}
