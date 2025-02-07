@@ -14,3 +14,9 @@ export * from './theme/customTheme';
 export type { ButtonProps } from './components/base/Button/Button';
 export type { InputProps } from './components/base/Input/Input';
 export type { FormProps } from './components/advance/Form/Form';
+
+// 导出 Slider 组件
+export * from './components/base/Slider/Slider';
+
+// 导出类型
+export type { SliderProps } from './components/base/Slider/Slider';
