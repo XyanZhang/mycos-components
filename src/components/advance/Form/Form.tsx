@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import { Button } from '../../base/Button/Button';
+import { StyledForm, StyledFormFooter } from '../../../theme/styled';
 
-interface FormProps {
+export interface FormProps {
   children: ReactNode;
   onSubmit: (e: React.FormEvent) => void;
   submitText?: string;
@@ -20,15 +21,15 @@ export const Form = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <StyledForm onSubmit={handleSubmit}>
       {children}
-      <div className="flex justify-end">
+      <StyledFormFooter>
         <Button
           label={loading ? '提交中...' : submitText}
           primary
           disabled={loading}
         />
-      </div>
-    </form>
+      </StyledFormFooter>
+    </StyledForm>
   );
 }; 

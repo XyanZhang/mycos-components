@@ -1,4 +1,5 @@
 import { createContext, useContext, ReactNode } from 'react';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { Theme, defaultTheme } from './theme';
 
 const ThemeContext = createContext<Theme>(defaultTheme);
@@ -11,7 +12,9 @@ interface ThemeProviderProps {
 export const ThemeProvider = ({ theme = defaultTheme, children }: ThemeProviderProps) => {
   return (
     <ThemeContext.Provider value={theme}>
-      {children}
+      <EmotionThemeProvider theme={theme}>
+        {children}
+      </EmotionThemeProvider>
     </ThemeContext.Provider>
   );
 };
