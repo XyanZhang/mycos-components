@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { ThemeProvider } from '../../../theme/ThemeContext';
+import { darkTheme } from '../../../theme/customTheme';
 
 const meta = {
   title: 'Base/Button',
@@ -7,6 +9,13 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   tags: ['autodocs'],
   argTypes: {
     size: {
@@ -25,6 +34,22 @@ export const Primary: Story = {
     label: '主要按钮',
     size: 'medium',
   },
+};
+
+// 使用暗色主题的示例
+export const PrimaryDark: Story = {
+  args: {
+    primary: true,
+    label: '暗色主题按钮',
+    size: 'medium',
+  },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={darkTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export const Secondary: Story = {

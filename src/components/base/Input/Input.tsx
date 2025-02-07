@@ -1,3 +1,5 @@
+import { useTheme } from '../../../theme/ThemeContext';
+
 interface InputProps {
   type?: 'text' | 'password' | 'email' | 'number';
   placeholder?: string;
@@ -15,6 +17,8 @@ export const Input = ({
   error,
   disabled = false
 }: InputProps) => {
+  const { colors } = useTheme();
+
   return (
     <div className="flex flex-col gap-1">
       <input
@@ -23,14 +27,26 @@ export const Input = ({
         onChange={onChange}
         disabled={disabled}
         placeholder={placeholder}
-        className={`
-          px-3 py-2 border rounded outline-none transition-colors
-          ${error ? 'border-red-500' : 'border-gray-300'}
-          ${disabled ? 'bg-gray-100' : 'bg-white'}
-          focus:border-blue-500
-        `}
+        style={{
+          backgroundColor: disabled ? colors.background.paper : colors.background.default,
+          borderColor: error ? colors.error.main : colors.border.main,
+          color: disabled ? colors.text.disabled : colors.text.primary,
+          padding: '0.5rem 0.75rem',
+          borderRadius: '0.25rem',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          outline: 'none',
+          transition: 'all 0.2s',
+          '&:focus': {
+            borderColor: colors.primary.main,
+          },
+        }}
       />
-      {error && <span className="text-sm text-red-500">{error}</span>}
+      {error && (
+        <span style={{ color: colors.error.main, fontSize: '0.875rem' }}>
+          {error}
+        </span>
+      )}
     </div>
   );
 }; 
