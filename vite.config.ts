@@ -9,13 +9,13 @@ export default defineConfig({
     react({
       jsxRuntime: 'automatic',
       babel: {
-        plugins: ['@emotion/babel-plugin']
-      }
+        plugins: ['@emotion/babel-plugin'],
+      },
     }),
     dts({
       include: ['src'],
       exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],
-      rollupTypes: true
+      rollupTypes: true,
     }),
   ],
   build: {
@@ -23,23 +23,23 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'MyComponents',
       formats: ['es'],
-      fileName: 'index'
+      fileName: 'index',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
+          'react-dom': 'ReactDOM',
+        },
+      },
     },
     sourcemap: true,
-    minify: true
+    minify: true,
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
-    }
-  }
+      '@': resolve(__dirname, 'src'),
+    },
+  },
 })

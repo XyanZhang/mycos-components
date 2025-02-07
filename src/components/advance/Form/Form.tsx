@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Button } from '../../base/Button/Button';
 import { StyledForm, StyledFormFooter } from '../../../theme/styled';
 
@@ -13,11 +13,13 @@ export const Form = ({
   children,
   onSubmit,
   submitText = '提交',
-  loading = false
+  loading = false,
 }: FormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(e);
+    if (!loading) {
+      onSubmit(e);
+    }
   };
 
   return (
@@ -32,4 +34,4 @@ export const Form = ({
       </StyledFormFooter>
     </StyledForm>
   );
-}; 
+};

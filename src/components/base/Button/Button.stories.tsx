@@ -12,7 +12,9 @@ const meta = {
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <Story />
+        <div style={{ padding: '1rem' }}>
+          <Story />
+        </div>
       </ThemeProvider>
     ),
   ],
@@ -20,9 +22,18 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large']
-    }
-  }
+      options: ['small', 'medium', 'large'],
+    },
+    primary: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    label: {
+      control: 'text',
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -46,7 +57,9 @@ export const PrimaryDark: Story = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={darkTheme}>
-        <Story />
+        <div style={{ padding: '1rem', background: '#121212' }}>
+          <Story />
+        </div>
       </ThemeProvider>
     ),
   ],
@@ -54,6 +67,7 @@ export const PrimaryDark: Story = {
 
 export const Secondary: Story = {
   args: {
+    primary: false,
     label: '次要按钮',
     size: 'medium',
   },
@@ -78,4 +92,4 @@ export const Disabled: Story = {
     label: '禁用按钮',
     disabled: true,
   },
-}; 
+};

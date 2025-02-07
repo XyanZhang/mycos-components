@@ -13,4 +13,4 @@ export * from './theme/customTheme';
 // 类型导出
 export type { ButtonProps } from './components/base/Button/Button';
 export type { InputProps } from './components/base/Input/Input';
-export type { FormProps } from './components/advance/Form/Form'; 
+export type { FormProps } from './components/advance/Form/Form';

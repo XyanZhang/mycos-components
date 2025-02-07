@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Theme } from './theme';
+import type { Theme } from './theme';
 
 // 创建基础按钮样式
 export const StyledButton = styled.button<{
@@ -11,11 +11,10 @@ export const StyledButton = styled.button<{
   border-radius: 4px;
   font-weight: 600;
   transition: all 0.2s;
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
-  ${props => {
-    const { colors } = props.theme;
-    const { primary, disabled } = props;
+  ${({ theme, primary = false, disabled = false }) => {
+    const { colors } = theme;
 
     if (disabled) {
       return `
@@ -25,26 +24,28 @@ export const StyledButton = styled.button<{
       `;
     }
 
-    return primary ? `
-      background-color: ${colors.primary.main};
-      color: ${colors.primary.contrastText};
-      border: 1px solid transparent;
-      &:hover {
-        background-color: ${colors.primary.dark};
-      }
-    ` : `
-      background-color: ${colors.background.paper};
-      color: ${colors.text.primary};
-      border: 1px solid ${colors.border.main};
-      &:hover {
-        border-color: ${colors.border.hover};
-        background-color: ${colors.background.default};
-      }
-    `;
+    return primary
+      ? `
+        background-color: ${colors.primary.main};
+        color: ${colors.primary.contrastText};
+        border: 1px solid transparent;
+        &:hover {
+          background-color: ${colors.primary.dark};
+        }
+      `
+      : `
+        background-color: ${colors.background.paper};
+        color: ${colors.text.primary};
+        border: 1px solid ${colors.border.main};
+        &:hover {
+          border-color: ${colors.border.hover};
+          background-color: ${colors.background.default};
+        }
+      `;
   }}
 
-  ${props => {
-    switch (props.size) {
+  ${({ size = 'medium' }) => {
+    switch (size) {
       case 'small':
         return `
           padding: 4px 12px;
@@ -106,10 +107,19 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+
+  & > * {
+    width: 100%;
+  }
 `;
 
 export const StyledFormFooter = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 24px;
+
+  & > button {
+    min-width: 120px;
+  }
 `;

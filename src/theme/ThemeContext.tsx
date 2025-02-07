@@ -1,6 +1,8 @@
-import { createContext, useContext, ReactNode } from 'react'
+import { createContext, useContext } from 'react'
+import type { ReactNode } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
-import { Theme, defaultTheme } from './theme'
+import type { Theme } from './theme'
+import { defaultTheme } from './theme'
 
 const ThemeContext = createContext<Theme>(defaultTheme)
 
