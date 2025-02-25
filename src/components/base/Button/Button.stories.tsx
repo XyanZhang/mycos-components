@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
-import { ThemeProvider } from '../../../theme/ThemeContext';
-import { darkTheme } from '../../../theme/customTheme';
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
+import { ThemeProvider } from '../../../theme/ThemeContext'
+import { darkTheme } from '../../../theme/customTheme'
 
 const meta = {
   title: 'Base/Button',
@@ -30,28 +30,25 @@ const meta = {
     disabled: {
       control: 'boolean',
     },
-    label: {
-      control: 'text',
-    },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
     primary: true,
-    label: '主要按钮',
+    children: '主要按钮',
     size: 'medium',
   },
-};
+}
 
 // 使用暗色主题的示例
 export const PrimaryDark: Story = {
   args: {
     primary: true,
-    label: '暗色主题按钮',
+    children: '暗色主题按钮',
     size: 'medium',
   },
   decorators: [
@@ -63,33 +60,33 @@ export const PrimaryDark: Story = {
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const Secondary: Story = {
   args: {
     primary: false,
-    label: '次要按钮',
+    children: '次要按钮',
     size: 'medium',
   },
-};
+}
 
 export const Small: Story = {
   args: {
     size: 'small',
-    label: '小按钮',
+    children: '小按钮',
   },
-};
+}
 
 export const Large: Story = {
   args: {
     size: 'large',
-    label: '大按钮',
+    children: '大按钮',
   },
-};
+}
 
 export const Disabled: Story = {
   args: {
-    label: '禁用按钮',
+    children: '禁用按钮',
     disabled: true,
   },
-};
+}
